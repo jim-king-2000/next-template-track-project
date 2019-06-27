@@ -6,7 +6,7 @@ import { CanvasTracks } from './CanvasTracks';
 export default observer(({ store }) => (
   <Box flex={{ grow: 1, shrink: 1 }}>
     <CanvasContainer mapkey='99c0746b70009d496380367b4f8f8494'>
-      <CanvasTracks tracks={store.tracks.value} />
+      <CanvasTracks tracks={store.tracks.get()} />
     </CanvasContainer>
   </Box>
 ));
