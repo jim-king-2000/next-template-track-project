@@ -13,7 +13,7 @@ export class CanvasTracks extends Component {
             path = [path];
           }
           return path.map((pathItem, i) => <Polyline
-            __map__={this.props.__map__}
+            __map__={__map__}
             key={`${track.thingId}-${i}`}
             path={pathItem}
             events={{ created: () => __map__.setFitView() }} />);
