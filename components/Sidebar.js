@@ -8,8 +8,18 @@ export default class extends Component {
     timeRange: { ...this.props.store.timeRange }
   }
 
-  onChangeStartTime = () => {};
-  onChangeEndTime = () => {};
+  onChangeStartTime = startTime => this.setState({
+    timeRange: {
+      startTime,
+      endTime: this.state.timeRange.endTime
+    }
+  });
+  onChangeEndTime = endTime => this.setState({
+    timeRange: {
+      startTime: this.state.timeRange.startTime,
+      endTime
+    }
+  });
 
   render() {
     return (
@@ -22,13 +32,15 @@ export default class extends Component {
             this.setState({ vehicles: this.state.vehicles });
           }} />
         <DateTimeRangePicker
-          startTime={this.state.timeRange.start}
-          endTime={this.state.timeRange.end}
+          startTime={this.state.timeRange.startTime}
+          endTime={this.state.timeRange.endTime}
           onChangeStartTime={this.onChangeStartTime}
           onChangeEndTime={this.onChangeEndTime} />
         <Button
           label='确认'
-          onClick={() => this.props.store.setVehicles(this.state.vehicles)} />
+          onClick={() => this.props.store.set(
+            this.state.vehicles,
+            this.state.timeRange)} />
       </Box>
     );
   }

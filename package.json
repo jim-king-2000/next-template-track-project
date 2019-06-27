@@ -37,6 +37,7 @@
     "next-transpile-modules": "^2.3.1",
     "pm2": "^3.5.1",
     "react": "^16.8.6",
+    "react-amap": "^1.2.8",
     "react-dom": "^16.8.6",
     "socket.io-client": "^2.2.0",
     "styled-components": "^4.3.1"
