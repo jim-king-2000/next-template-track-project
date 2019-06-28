@@ -1,7 +1,6 @@
 import { observer } from 'mobx-react';
 import { Box } from 'grommet';
-import { CanvasContainer } from 'location-backbone-canvas';
-import { CanvasTracks } from './CanvasTracks';
+import { CanvasContainer, CanvasTracks } from 'location-backbone-canvas';
 
 export default observer(({ store }) => (
   <Box flex={{ grow: 1, shrink: 1 }}>
