@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Box, Button } from 'grommet';
 import { observer } from 'mobx-react';
-import { VehicleSelector, DateTimeRangePicker } from 'location-backbone-fe';
-import { TrackPlayer } from './TrackPlayer';
+import { VehicleSelector, DateTimeRangePicker,
+  TrackPlayer } from 'location-backbone-fe';
 
 @observer
 export default class extends Component {
