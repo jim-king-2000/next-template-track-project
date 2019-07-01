@@ -1,5 +1,5 @@
-import { observable, computed } from 'mobx';
-import { calcPlayerTimestamp } from './TrackPlayerStoreUtil';
+import { observable, computed, autorun } from 'mobx';
+import { calcPlayerTimestamp, calcPlayerIndex } from './TrackPlayerStoreUtil';
 
 export class TrackPlayerStore {
   constructor(tracks, timeRange) {
@@ -8,13 +8,18 @@ export class TrackPlayerStore {
       tracks: t.splittedTrack.flat()
     }));
     this.timeRange = timeRange;
+
+    autorun(() => this.playerTimeline =
+      calcPlayerTimestamp(this.tracks, this.timeRange));
   }
 
   @computed
-  get playerTimeline() {
-    return calcPlayerTimestamp(this.tracks, this.timeRange);
+  get things() {
+    calcPlayerIndex(this.tracks, this.playerTimeline.currentTimestamp);
+    return this.tracks.map(t => t.tracks[t.index]);
   }
 
   @observable tracks = [];
   @observable timeRange = {};
+  @observable playerTimeline = {};
 }

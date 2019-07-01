@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Box, Button } from 'grommet';
 import { observer } from 'mobx-react';
 import { VehicleSelector, DateTimeRangePicker } from 'location-backbone-fe';
+import { TrackPlayer } from './TrackPlayer';
 
 @observer
 export default class extends Component {
@@ -47,6 +48,8 @@ export default class extends Component {
           onClick={() => this.props.store.set(
             this.state.vehicles,
             this.state.timeRange)} />
+          <TrackPlayer
+            timeline={this.props.store.trackPlayerStore.get()}/>
       </Box>
     );
   }
