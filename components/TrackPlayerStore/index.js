@@ -15,8 +15,10 @@ export class TrackPlayerStore {
 
   @computed
   get things() {
-    calcPlayerIndex(this.tracks, this.playerTimeline.currentTimestamp);
-    return this.tracks.map(t => t.tracks[t.index]);
+    const tracks = calcPlayerIndex(
+      this.tracks,
+      this.playerTimeline.currentTimestamp);
+    return tracks.map(t => t.tracks[t.index]);
   }
 
   @observable tracks = [];

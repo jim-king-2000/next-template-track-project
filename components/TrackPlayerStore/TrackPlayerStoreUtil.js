@@ -46,9 +46,12 @@ function forwardIndex(tracks, timestamp, prevIndex) {
 }
 
 export function calcPlayerIndex(tracks, timestamp) {
-  return tracks.forEach(t => t.index = forwardIndex(
-    t.tracks,
-    timestamp,
-    t.index || 0
+  return tracks.map(t => ({
+    tracks: t.tracks,
+    index: forwardIndex(
+      t.tracks,
+      timestamp,
+      t.index || 0
+    )}
   ));
 }

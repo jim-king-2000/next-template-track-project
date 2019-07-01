@@ -65,7 +65,8 @@ export class TrackPlayer extends Component {
             min={startTimestamp}
             max={endTimestamp}
             value={currentTimestamp}
-            onChange={e => this.props.onChange(Number(e.target.value))} />
+            onChange={e =>
+              this.props.timeline.currentTimestamp = Number(e.target.value)} />
         </Box>
         <Box direction='row'>
           <ButtonPlayOrPause
