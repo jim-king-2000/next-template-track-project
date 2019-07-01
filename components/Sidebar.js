@@ -3,6 +3,7 @@ import { Box, Button } from 'grommet';
 import { observer } from 'mobx-react';
 import { VehicleSelector, DateTimeRangePicker,
   TrackPlayer } from 'location-backbone-fe';
+import { TrackVisualizer } from './TrackVisualizer';
 
 @observer
 export default class extends Component {
@@ -28,9 +29,10 @@ export default class extends Component {
 
   render() {
     const store = this.props.store;
+    const trackPlayerStore = store.trackPlayerStore.get();
     const disabled = store.tracks.busy || this.state.isPlaying;
     return (
-      <Box width='medium'>
+      <Box width='medium' gap='xsmall'>
         <VehicleSelector
           disabled={disabled}
           overflow='auto'
@@ -45,15 +47,20 @@ export default class extends Component {
           endTime={this.state.timeRange.endTime}
           onChangeStartTime={this.onChangeStartTime}
           onChangeEndTime={this.onChangeEndTime} />
-        <Button
-          disabled={disabled}
-          label='确认'
-          onClick={() => store.set(
-            this.state.vehicles,
-            this.state.timeRange)} />
-          <TrackPlayer
-            onPlayOrPause={isPlaying => this.setState({ isPlaying })}
-            timeline={store.trackPlayerStore.get().playerTimeline}/>
+        <Box align='center' flex={false}>
+          <Button
+            disabled={disabled}
+            label='查询轨迹'
+            onClick={() => store.set(
+              this.state.vehicles,
+              this.state.timeRange)} />
+        </Box>
+        <TrackPlayer
+          onPlayOrPause={isPlaying => this.setState({ isPlaying })}
+          timeline={trackPlayerStore.playerTimeline} />
+        <TrackVisualizer
+          timeline={trackPlayerStore.playerTimeline}
+          visualization={trackPlayerStore.visualization} />
       </Box>
     );
   }
