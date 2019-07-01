@@ -38,7 +38,8 @@ function forwardIndex(tracks, timestamp, prevIndex) {
 
   if (timestamp < tracks[prevIndex].timestamp) prevIndex = 0;
   
-  for (let index = prevIndex; index < length; ++index) {
+  let index = prevIndex;
+  for (; index < length; ++index) {
     if (timestamp < tracks[index].timestamp) return index;
   }
   assert(index >= 0 && index <= length);

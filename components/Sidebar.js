@@ -18,6 +18,7 @@ export default class extends Component {
       endTime: this.state.timeRange.endTime
     }
   });
+
   onChangeEndTime = endTime => this.setState({
     timeRange: {
       startTime: this.state.timeRange.startTime,
@@ -26,7 +27,8 @@ export default class extends Component {
   });
 
   render() {
-    const disabled = this.props.store.tracks.busy || this.state.isPlaying;
+    const store = this.props.store;
+    const disabled = store.tracks.busy || this.state.isPlaying;
     return (
       <Box width='medium'>
         <VehicleSelector
@@ -46,12 +48,12 @@ export default class extends Component {
         <Button
           disabled={disabled}
           label='确认'
-          onClick={() => this.props.store.set(
+          onClick={() => store.set(
             this.state.vehicles,
             this.state.timeRange)} />
           <TrackPlayer
             onPlayOrPause={isPlaying => this.setState({ isPlaying })}
-            timeline={this.props.store.trackPlayerStore.get().playerTimeline}/>
+            timeline={store.trackPlayerStore.get().playerTimeline}/>
       </Box>
     );
   }
