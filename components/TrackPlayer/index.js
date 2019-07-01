@@ -55,16 +55,16 @@ export class TrackPlayer extends Component {
   onSlow = () => this.setState({ step: normalize(this.state.step - 1) });
 
   render() {
-    console.log(this.props)
-    // const { startTimestamp, endTimestamp, currentTimestamp } = this.props.timeline;
-    const enabled = this.props.min < this.props.max;
+    const { startTimestamp, endTimestamp, currentTimestamp } = this.props.timeline;
+    console.log(startTimestamp, endTimestamp, currentTimestamp)
+    const enabled = startTimestamp < endTimestamp;
     return (
       <Box>
         <Box align='center' pad='xsmall'>
           <RangeInput
-            min={this.props.min}
-            max={this.props.max}
-            value={this.props.value}
+            min={startTimestamp}
+            max={endTimestamp}
+            value={currentTimestamp}
             onChange={e => this.props.onChange(Number(e.target.value))} />
         </Box>
         <Box direction='row'>

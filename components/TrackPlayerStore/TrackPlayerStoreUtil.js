@@ -21,8 +21,8 @@ export function calcPlayerTimestamp(tracks, timeRange) {
   };
 
   const currentTimestamp = Math.min(...timestamps);
-  const endTimestamp = toTimestamp(timeRange.startTime);
-  const startTimestamp = toTimestamp(timeRange.endTime);
+  const startTimestamp = toTimestamp(timeRange.startTime);
+  const endTimestamp = toTimestamp(timeRange.endTime);
   return {
     startTimestamp,
     endTimestamp,

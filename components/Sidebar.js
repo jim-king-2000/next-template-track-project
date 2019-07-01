@@ -49,7 +49,7 @@ export default class extends Component {
             this.state.vehicles,
             this.state.timeRange)} />
           <TrackPlayer
-            timeline={this.props.store.trackPlayerStore.get()}/>
+            timeline={this.props.store.trackPlayerStore.get().playerTimeline}/>
       </Box>
     );
   }
