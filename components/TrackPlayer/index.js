@@ -28,19 +28,23 @@ export class TrackPlayer extends Component {
 
   onPlay = () => {
     assert.deepEqual(this.state.isPlay, true);
+    const timeline = this.props.timeline;
+    const { endTimestamp, currentTimestamp } = timeline;
+
     if (this.timer) {
       assert.fail('this.timer should be null.');
       this.onPause();
     }
     this.timer = setInterval(() => {
-      if (this.props.value >= this.props.max) {
+      if (currentTimestamp >= endTimestamp) {
         this.onPause();
         return;
       }
-      this.props.onForward(Steps[this.state.step]);
+      timeline.currentTimestamp += Steps[this.state.step];
     }, 700);
+
     this.setState({ isPlay: false });
-    this.props.onPlayOrPause(true);
+    this.props.onPlayOrPause && this.props.onPlayOrPause(true);
   }
 
   onPause = () => {
@@ -48,15 +52,15 @@ export class TrackPlayer extends Component {
     clearInterval(this.timer);
     this.timer = null;
     this.setState({ isPlay: true });
-    this.props.onPlayOrPause(false);
+    this.props.onPlayOrPause && this.props.onPlayOrPause(false);
   }
 
   onFast = () => this.setState({ step: normalize(this.state.step + 1) });
   onSlow = () => this.setState({ step: normalize(this.state.step - 1) });
 
   render() {
-    const { startTimestamp, endTimestamp, currentTimestamp } = this.props.timeline;
-    console.log(startTimestamp, endTimestamp, currentTimestamp)
+    const { startTimestamp, endTimestamp,
+      currentTimestamp } = this.props.timeline;
     const enabled = startTimestamp < endTimestamp;
     return (
       <Box>

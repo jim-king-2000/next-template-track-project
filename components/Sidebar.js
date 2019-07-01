@@ -8,7 +8,8 @@ import { TrackPlayer } from './TrackPlayer';
 export default class extends Component {
   state = {
     vehicles: this.props.store.vehicles.map(v => ({ ...v })),
-    timeRange: { ...this.props.store.timeRange }
+    timeRange: { ...this.props.store.timeRange },
+    isPlaying: false
   }
 
   onChangeStartTime = startTime => this.setState({
@@ -25,9 +26,9 @@ export default class extends Component {
   });
 
   render() {
-    const disabled = this.props.store.tracks.busy;
+    const disabled = this.props.store.tracks.busy || this.state.isPlaying;
     return (
-      <Box>
+      <Box width='medium'>
         <VehicleSelector
           disabled={disabled}
           overflow='auto'
@@ -49,6 +50,7 @@ export default class extends Component {
             this.state.vehicles,
             this.state.timeRange)} />
           <TrackPlayer
+            onPlayOrPause={isPlaying => this.setState({ isPlaying })}
             timeline={this.props.store.trackPlayerStore.get().playerTimeline}/>
       </Box>
     );
