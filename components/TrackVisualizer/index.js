@@ -2,16 +2,6 @@ import { Box, Stack, Text } from 'grommet';
 import { observer } from 'mobx-react';
 import moment from 'moment';
 
-function formatTime2(timestamp) {
-  return (
-    <>
-      {moment(timestamp).format('YY/MM/DD')}
-      <br />
-      {moment(timestamp).format('HH:mm:ss')}
-    </>
-  );
-}
-
 const ClockItem = ({ timestamp, current }) => (
   <Box>
     <Text color={current ? 'brand' : undefined}>
