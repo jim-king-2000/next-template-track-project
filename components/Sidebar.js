@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Box, Button } from 'grommet';
 import { observer } from 'mobx-react';
 import { VehicleSelector, DateTimeRangePicker,
-  TrackPlayer } from 'location-backbone-fe';
-import { TrackVisualizer } from './TrackVisualizer';
+  TrackPlayer, TrackVisualizer } from 'location-backbone-fe';
 
 @observer
 export default class extends Component {
