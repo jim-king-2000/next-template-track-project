@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react';
 import { Box } from 'grommet';
+import { LinkUp } from 'grommet-icons';
 import moment from 'moment';
 import { CanvasContainer, CanvasTracks,
   CanvasPositions, CanvasInformation } from 'location-backbone-canvas';
@@ -35,6 +36,10 @@ const template = [{
   label: '精度',
   property: 'accuracy',
   transform: v => `${v && v.toFixed(2)}m`
+}, {
+  label: '方向',
+  property: 'heading',
+  transform: v => <LinkUp style={{ transform: `rotate(${v}deg)` }} />
 }, {
   label: '光线',
   property: 'light'
