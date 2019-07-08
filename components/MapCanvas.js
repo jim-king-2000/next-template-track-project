@@ -53,7 +53,8 @@ export default observer(({ store }) => {
         <CanvasPositions
           things={trackPlayerStore.things}
           events={{
-            click: e => trackPlayerStore.selectedThingId = e.target.getExtData().thingId
+            click: e =>
+              trackPlayerStore.selectedThingId = e.target.getExtData().thingId
           }} />
         <CanvasInformation
           onClose={() => trackPlayerStore.selectedThingId = undefined}

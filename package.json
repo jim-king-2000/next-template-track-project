@@ -21,6 +21,7 @@
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.5.0",
     "@babel/plugin-proposal-decorators": "^7.4.4",
+    "array.prototype.flat": "^1.2.1",
     "babel-plugin-styled-components": "^1.10.6",
     "computed-async-mobx": "^4.1.1",
     "grommet": "^2.7.2",
