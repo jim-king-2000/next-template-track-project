@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import { Box } from 'grommet';
 import { LinkUp } from 'grommet-icons';
 import moment from 'moment';
-import { CanvasContainer, CanvasTracks,
+import { CanvasContainer, CanvasTracks, PluginZoom,
   CanvasPositions, CanvasInformation } from 'location-backbone-canvas';
 
 const template = [{
@@ -66,6 +66,12 @@ export default observer(({ store }) => {
           data={trackPlayerStore.selectedVehicle}
           template={template}
         />
+        <PluginZoom
+          direction='row'
+          style={{
+            position: 'absolute',
+            top: 0
+          }} />
       </CanvasContainer>
     </Box>
   )}
