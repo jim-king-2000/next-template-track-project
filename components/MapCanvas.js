@@ -53,11 +53,7 @@ export default observer(({ store }) => {
   const trackPlayerStore = store.trackPlayerStore.get();
   return (
     <Box flex={{ grow: 1, shrink: 1 }}>
-      <CanvasContainer mapkey='99c0746b70009d496380367b4f8f8494'
-        events={{
-          created: ins => ins.setFeatures(['bg', 'road'])
-        }}
-      >
+      <CanvasContainer mapkey='99c0746b70009d496380367b4f8f8494' >
         <CanvasTracks tracks={store.tracks.get()} />
         <CanvasPositions
           things={trackPlayerStore.things}
