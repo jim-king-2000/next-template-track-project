@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import { Box } from 'grommet';
 import { LinkUp } from 'grommet-icons';
 import moment from 'moment';
-import { CanvasContainer, CanvasTracks, PluginZoom,
+import { CanvasContainer, CanvasTracks, PluginZoom, CanvasReactor, 
   CanvasPositions, CanvasInformation } from 'location-backbone-canvas';
 
 const template = [{
@@ -71,7 +71,12 @@ export default observer(({ store }) => {
           style={{
             position: 'absolute',
             top: 0
-          }} />
+          }}
+          tracingMode={store.tracingMode || false}
+          onChange={e => store.tracingMode = e.target.checked} />
+        <CanvasReactor
+          markers={trackPlayerStore.things}
+          tracingMode={store.tracingMode || false} />
       </CanvasContainer>
     </Box>
   )}
