@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import { Box } from 'grommet';
 import { LinkUp } from 'grommet-icons';
 import moment from 'moment';
-import { CanvasContainer, CanvasTracks, PluginZoom, CanvasReactor, 
+import { CanvasContainer, CanvasTracks, CanvasPluginZoom, CanvasReactor, 
   CanvasPositions, CanvasInformation } from 'location-backbone-canvas';
 
 const template = [{
@@ -53,7 +53,11 @@ export default observer(({ store }) => {
   const trackPlayerStore = store.trackPlayerStore.get();
   return (
     <Box flex={{ grow: 1, shrink: 1 }}>
-      <CanvasContainer mapkey='99c0746b70009d496380367b4f8f8494'>
+      <CanvasContainer mapkey='99c0746b70009d496380367b4f8f8494'
+        events={{
+          created: ins => ins.setFeatures(['bg', 'road'])
+        }}
+      >
         <CanvasTracks tracks={store.tracks.get()} />
         <CanvasPositions
           things={trackPlayerStore.things}
@@ -66,17 +70,17 @@ export default observer(({ store }) => {
           data={trackPlayerStore.selectedVehicle}
           template={template}
         />
-        <PluginZoom
+        <CanvasPluginZoom
           direction='row'
           style={{
             position: 'absolute',
             top: 0
           }}
-          tracingMode={store.tracingMode || false}
+          tracingMode={store.tracingMode}
           onChange={e => store.tracingMode = e.target.checked} />
         <CanvasReactor
           markers={trackPlayerStore.things}
-          tracingMode={store.tracingMode || false} />
+          tracingMode={store.tracingMode} />
       </CanvasContainer>
     </Box>
   )}
