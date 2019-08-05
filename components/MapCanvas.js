@@ -2,8 +2,7 @@ import { observer } from 'mobx-react';
 import { Box } from 'grommet';
 import { LinkUp } from 'grommet-icons';
 import moment from 'moment';
-import { CanvasContainer, CanvasTracks, CanvasPluginZoom, CanvasReactor, 
-  CanvasPositions, CanvasInformation } from 'location-backbone-canvas';
+import { CanvasTrackMonitor } from 'location-backbone-canvas';
 
 const template = [{
   label: '时间',
@@ -53,31 +52,14 @@ export default observer(({ store }) => {
   const trackPlayerStore = store.trackPlayerStore.get();
   return (
     <Box flex={{ grow: 1, shrink: 1 }}>
-      <CanvasContainer mapkey='99c0746b70009d496380367b4f8f8494' >
-        <CanvasTracks tracks={store.tracks.get()} />
-        <CanvasPositions
-          things={trackPlayerStore.things}
-          events={{
-            click: e =>
-              trackPlayerStore.selectedThingId = e.target.getExtData().thingId
-          }} />
-        <CanvasInformation
-          onClose={() => trackPlayerStore.selectedThingId = undefined}
-          data={trackPlayerStore.selectedVehicle}
-          template={template}
-        />
-        <CanvasPluginZoom
-          direction='row'
-          style={{
-            position: 'absolute',
-            top: 0
-          }}
-          tracingMode={store.tracingMode}
-          onChange={e => store.tracingMode = e.target.checked} />
-        <CanvasReactor
-          markers={trackPlayerStore.things}
-          tracingMode={store.tracingMode} />
-      </CanvasContainer>
+      <CanvasTrackMonitor
+        mapKey='99c0746b70009d496380367b4f8f8494'
+        positions={trackPlayerStore.things}
+        tracks={store.tracks.get()}
+        selectedThing={trackPlayerStore.selectedVehicle}
+        selectThingId={thingId => trackPlayerStore.selectedThingId = thingId}
+        propertyTemplate={template}
+      />
     </Box>
   )}
 );
