@@ -7,7 +7,7 @@ import { CanvasTrackMonitor } from 'location-backbone-canvas';
 const template = [{
   label: '时间',
   property: 'timestamp',
-  transform: ts => moment(ts).format('YYYY-MM-DD HH:mm:ss')
+  transform: ts => ts && moment(ts).format('YYYY-MM-DD HH:mm:ss')
 }, {
   label: '名称',
   property: 'thingName'
@@ -26,19 +26,20 @@ const template = [{
 }, {
   label: '速度',
   property: 'speed',
-  transform: v => `${v && (v * 3.6).toFixed(2)}km/h`
+  transform: v => v && `${(v * 3.6).toFixed(2)}km/h`
 }, {
   label: '高度',
   property: 'altitude',
-  transform: v => `${v && v.toFixed(2)}m`
+  transform: v => v && `${v.toFixed(2)}m`
 }, {
   label: '精度',
   property: 'accuracy',
-  transform: v => `${v && v.toFixed(2)}m`
+  transform: v => v && `${v.toFixed(2)}m`
 }, {
   label: '方向',
   property: 'heading',
-  transform: v => <LinkUp style={{ transform: `rotate(${v}deg)` }} />
+  transform: v => typeof v === 'number' &&
+    <LinkUp style={{ transform: `rotate(${v}deg)` }} />
 }, {
   label: '光线',
   property: 'light'
