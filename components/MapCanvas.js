@@ -45,7 +45,7 @@ const template = [{
 }, {
   label: '温度',
   property: 'temp',
-  transform: v => `${v}\u2103`
+  transform: v => v && `${v}\u2103`
 }];
 
 export default observer(({ store }) => {
