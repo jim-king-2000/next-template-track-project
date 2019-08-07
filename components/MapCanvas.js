@@ -18,23 +18,23 @@ const template = [{
 }, {
   label: '经度',
   property: 'longitude',
-  transform: v => v && v.toFixed(6)
+  transform: v => typeof v === 'number' && v.toFixed(6)
 }, {
   label: '纬度',
   property: 'latitude',
-  transform: v => v && v.toFixed(6)
+  transform: v => typeof v === 'number' && v.toFixed(6)
 }, {
   label: '速度',
   property: 'speed',
-  transform: v => v && `${(v * 3.6).toFixed(2)}km/h`
+  transform: v => typeof v === 'number' && `${(v * 3.6).toFixed(2)}km/h`
 }, {
   label: '高度',
   property: 'altitude',
-  transform: v => v && `${v.toFixed(2)}m`
+  transform: v => typeof v === 'number' && `${v.toFixed(2)}m`
 }, {
   label: '精度',
   property: 'accuracy',
-  transform: v => v && `${v.toFixed(2)}m`
+  transform: v => typeof v === 'number' && `${v.toFixed(2)}m`
 }, {
   label: '方向',
   property: 'heading',
@@ -42,11 +42,12 @@ const template = [{
     <LinkUp style={{ transform: `rotate(${v}deg)` }} />
 }, {
   label: '光线',
-  property: 'light'
+  property: 'light',
+  transform: v => typeof v === 'number' && v
 }, {
   label: '温度',
   property: 'temp',
-  transform: v => v && `${v}\u2103`
+  transform: v => typeof v === 'number' && `${v}\u2103`
 }];
 
 export default observer(({ store }) => {
