@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Box, Button } from 'grommet';
 import { observer } from 'mobx-react';
-import { VehicleSelector, DateTimeRangePicker,
+import { FlatSelector, DateTimeRangePicker,
   TrackPlayer, TrackVisualizer } from 'location-backbone-fe';
 
 @observer
@@ -32,7 +32,7 @@ export default class extends Component {
     const disabled = store.tracks.busy || this.state.isPlaying;
     return (
       <Box width='medium' gap='xsmall'>
-        <VehicleSelector
+        <FlatSelector
           disabled={disabled}
           overflow='auto'
           vehicles={this.state.vehicles}
