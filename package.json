@@ -31,14 +31,14 @@
     "location-backbone-sdk": "git+https://github.com/jim-king-2000/location-backbone-sdk.git",
     "location-backbone-store": "git+https://github.com/jim-king-2000/location-backbone-store.git",
     "mobx": "^5.13.0",
-    "mobx-react": "^6.1.1",
+    "mobx-react": "^6.1.2",
     "mobx-utils": "^5.4.1",
     "moment": "^2.24.0",
     "next": "^9.0.3",
     "next-transpile-modules": "^2.3.1",
     "pm2": "^3.5.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "socket.io-client": "^2.2.0",
     "styled-components": "^4.3.1"
   }
