@@ -48,6 +48,10 @@ const template = [{
   label: '温度',
   property: 'temp',
   transform: v => typeof v === 'number' && `${v}\u2103`
+}, {
+  label: '湿度',
+  property: 'humidity',
+  transform: v => typeof v === 'number' && `${v}%`
 }];
 
 export default observer(({ store }) => {
