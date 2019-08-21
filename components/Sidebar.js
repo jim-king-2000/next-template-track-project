@@ -9,7 +9,6 @@ export default class extends Component {
   state = {
     vehicles: this.props.store.vehicles.map(v => ({ ...v })),
     timeRange: { ...this.props.store.timeRange },
-    isPlaying: false
   }
 
   onChangeStartTime = startTime => this.setState({
@@ -29,7 +28,8 @@ export default class extends Component {
   render() {
     const store = this.props.store;
     const trackPlayerStore = store.trackPlayerStore.get();
-    const disabled = store.tracks.busy || this.state.isPlaying;
+    const disabled = store.tracks.busy ||
+      trackPlayerStore.playerStatus.isPlaying;
     return (
       <Box width='medium' gap='xsmall'>
         <FlatSelector
@@ -55,7 +55,7 @@ export default class extends Component {
               this.state.timeRange)} />
         </Box>
         <TrackPlayer
-          onPlayOrPause={isPlaying => this.setState({ isPlaying })}
+          playerStatus={trackPlayerStore.playerStatus}
           timeline={trackPlayerStore.playerTimeline} />
         <TrackVisualizer
           timeline={trackPlayerStore.playerTimeline}
