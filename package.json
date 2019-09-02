@@ -24,7 +24,7 @@
     "array.prototype.flat": "^1.2.1",
     "babel-plugin-styled-components": "^1.10.6",
     "computed-async-mobx": "^4.2.1",
-    "grommet": "^2.7.6",
+    "grommet": "^2.7.7",
     "isomorphic-unfetch": "^3.0.0",
     "location-backbone-canvas": "git+https://github.com/jim-king-2000/location-backbone-canvas.git",
     "location-backbone-fe": "git+https://github.com/jim-king-2000/location-backbone-fe.git",
