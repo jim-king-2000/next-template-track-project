@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react';
 import { Box } from 'grommet';
-import { CanvasTrackMonitor } from 'location-backbone-canvas';
+import { CanvasTrackMonitor } from 'location-backbone-canvas-amap';
 
 export default observer(({ store }) => {
   const trackPlayerStore = store.trackPlayerStore.get();
