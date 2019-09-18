@@ -7,7 +7,7 @@ import Sidebar from '../components/Sidebar';
 import dynamic from 'next/dynamic';
 
 const MapCanvas = dynamic(
-  () => import('../components/MapCanvasAMap'),
+  () => import('../components/MapCanvasBMap'),
   { ssr: false }
 );
 const client = new ThingManagementClient();
@@ -16,7 +16,7 @@ export default class extends Component {
   state = new TrackStore(this.props.vehicles, [{
     name: 'trackPlayerStore',
     type: TrackPlayerStore
-  }]);
+  }], 'bd-09');
 
   static async getInitialProps() {
     const resp = await client.listThing({ appId, authorization });
