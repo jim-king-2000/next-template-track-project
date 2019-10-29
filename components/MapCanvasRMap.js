@@ -1,13 +1,14 @@
-import { observer } from 'mobx-react';
 import { Box } from 'grommet';
-import { CanvasTrackMonitor } from 'location-backbone-canvas-amap';
+import { observer } from 'mobx-react';
+import { CanvasTrackMonitor } from 'location-backbone-canvas-react-map';
 
-export default observer(({ store }) => {
+export default observer(({ store, mapKey, mapVendor }) => {
   const trackPlayerStore = store.trackPlayerStore.get();
   return (
     <Box flex={{ grow: 1, shrink: 1 }}>
       <CanvasTrackMonitor
-        mapKey='99c0746b70009d496380367b4f8f8494'
+        mapKey={mapKey}
+        mapVendor={mapVendor}
         setFitView={!!store.setFitView}
         onUpdateEnd={() => store.tracks.busy || (store.setFitView = false)}
         positions={trackPlayerStore.things}
