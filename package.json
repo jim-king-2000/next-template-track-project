@@ -36,15 +36,15 @@
     "location-backbone-store": "git+https://github.com/jim-king-2000/location-backbone-store.git",
     "mobx": "^5.14.2",
     "mobx-react": "^6.1.4",
-    "mobx-utils": "^5.5.1",
+    "mobx-utils": "^5.5.2",
     "moment": "^2.24.0",
-    "next": "^9.1.1",
+    "next": "^9.1.2",
     "next-compose-plugins": "^2.2.0",
     "next-transpile-modules": "^2.3.1",
     "pm2": "^4.1.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "socket.io-client": "^2.3.0",
-    "styled-components": "^4.4.0"
+    "styled-components": "^4.4.1"
   }
 }
