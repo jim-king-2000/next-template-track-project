@@ -16,5 +16,4 @@ export default [{
   label: 'Google地图',
   mapVendor: 'RGoogleMap',
   mapKey: 'AIzaSyBy1-bole0TkeLc8s537ynNJauFv5iY4_I',
-}
-];
+};
