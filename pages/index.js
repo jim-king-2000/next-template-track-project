@@ -39,26 +39,28 @@ export default class extends Component {
     return { vehicles };
   }
 
-  render = () => (
-    <Grommet full plain>
-      <Box fill direction='row'>
-        <Box>
-          <Select
-            options={MapTypes}
-            value={this.state.mapType}
-            labelKey='label'
-            onChange={({ option }) => this.switchMapType(option)}
-            disable={this.state.store.tracks.busy ||
-              this.state.store.trackPlayerStore.get().playerStatus.isPlaying}
+  render() {
+    return (
+      <Grommet full plain>
+        <Box fill direction='row'>
+          <Box>
+            <Select
+              options={MapTypes}
+              value={this.state.mapType}
+              labelKey='label'
+              onChange={({ option }) => this.switchMapType(option)}
+              disable={this.state.store.tracks.busy ||
+                this.state.store.trackPlayerStore.get().playerStatus.isPlaying}
+            />
+            <Sidebar store={this.state.store} />
+          </Box>
+          <MapCanvas
+            store={this.state.store}
+            mapKey={this.state.mapType.mapKey}
+            mapVendor={this.state.mapType.mapVendor}
           />
-          <Sidebar store={this.state.store} />
         </Box>
-        <MapCanvas
-          store={this.state.store}
-          mapKey={this.state.mapType.mapKey}
-          mapVendor={this.state.mapType.mapVendor}
-        />
-      </Box>
-    </Grommet>
-  );
+      </Grommet>
+    );
+  }
 }
